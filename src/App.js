@@ -37,7 +37,6 @@ function App() {
   return (
       <Container className="my-4">
           <div className="App-title">Book Management</div>
-          {/* <h1 className="text-center mb-4">Book Management</h1> */}
           <Row className="mb-4 justify-content-center">
               <Col xs="auto">
                   <Button variant="primary" onClick={fetchBooks} className="me-2">Get Books</Button>
