@@ -10,14 +10,16 @@ const AddBookModal = ({ show, onHide, onBookAdded }) => {
     const [year, setYear] = useState('');
     const [genre, setGenre] = useState('');
     const [pages, setPages] = useState('');
+    const [imageUrl, setImageUrl] = useState(''); 
 
     const handleAddBook = async () => {
         await axios.post(apiEndpoint, {
-            Title: title,
+            Title: title,          
             Author: author,
             Year: parseInt(year),
             Genre: genre,
             Pages: parseInt(pages),
+            imageUrl: imageUrl    
         });
         onBookAdded();
         onHide();
@@ -26,6 +28,7 @@ const AddBookModal = ({ show, onHide, onBookAdded }) => {
         setYear('');
         setGenre('');
         setPages('');
+        setImageUrl('');
     };
 
     return (
@@ -54,6 +57,10 @@ const AddBookModal = ({ show, onHide, onBookAdded }) => {
                     <Form.Group className="mb-3" controlId="formPages">
                         <Form.Label>Pages</Form.Label>
                         <Form.Control type="number" value={pages} onChange={(e) => setPages(e.target.value)} />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formImageUrl">
+                        <Form.Label>Image URL</Form.Label>
+                        <Form.Control type="text" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
                     </Form.Group>
                 </Form>
             </Modal.Body>
